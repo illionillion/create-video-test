@@ -2,8 +2,8 @@ import { Button, Center, Input } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
-const width = 255;
-const height = 255;
+const width = 250;
+const height = 250;
 const App = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [movieLengthSec, setMovieLengthSec] = useState<number>(5);
@@ -90,7 +90,15 @@ const App = () => {
       <Button onClick={frame_start} isDisabled={isProcessing}>
         {isProcessing ? "録画中" : "録画開始"}
       </Button>
-      {blobUrl !== "" ? <video src={blobUrl} controls></video> : <></>}
+      {blobUrl !== "" ? (
+        <video
+          src={blobUrl}
+          controls
+          style={{ borderBlock: "solid", borderWidth: 1, borderColor: "#000" }}
+        ></video>
+      ) : (
+        <></>
+      )}
     </Center>
   );
 };
